@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Orin!</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="confetti-container"></div>
+    <div class="message-background">
+        <div class="message-container">
+            <h1>🎂 Happy Birthday, Orin! 🎂</h1>
+		<div class="letter-container">
+   			 <p class="letter-line">Dear cousin,</p>
+			 <p class="letter-line">I hope you're doing well and finding happiness in all that you do. Stay strong, and remember that 		I’m always here if you need anything. Let’s make plans to catch up soon.</p>
+			 <p class="letter-line">Best regards,</p>
+			    <p class="letter-line">Aadil</p>
+		</div>
+
+
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="icing"></div>
+                <div class="candle"></div>
+                <div class="flame"></div>
+            </div>
+            <a href="index.html" class="back-button">Back to Countdown</a>
+        </div>
+    </div>
+    <script>
+        // Create confetti for the birthday message page
+        function createConfetti() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            const container = document.getElementById('confetti-container');
+            
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(confetti);
+            }
+        }
+        
+        createConfetti();
+    </script>
+</body>
+</html>

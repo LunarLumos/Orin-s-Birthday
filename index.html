@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orin's Birthday Countdown</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Make the YouTube video fill the background */
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Keeps the video behind other elements */
+        }
+
+        /* Ensure the iframe takes the full space */
+        #background-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Styling for the heading */
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: pink;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adds shadow for visibility */
+        }
+
+        /* Make time and quotes bold */
+        .clock, .quote {
+            color: white;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.5em;
+            font-weight: bold; /* Make text bold */
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Style for the unmute button */
+        #unmuteButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        #unmuteButton:hover {
+            background-color: #e67e22;
+        }
+
+        /* Ensure that content is spaced out to make room for the button */
+        .container {
+            padding-bottom: 100px; /* Adjust to ensure space for the button */
+        }
+
+        /* Add styles for the cyan time text */
+        .clock {
+            color: cyan !important; /* Make sure it always appears cyan */
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Audio (YouTube video) -->
+    <div id="background-video">
+        <iframe 
+            id="background-video-frame"
+            src="https://www.youtube.com/embed/dAsRPFNWOvk?autoplay=1&loop=1&playlist=dAsRPFNWOvk&mute=1" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <div id="confetti-container"></div>
+
+    <div class="background">
+        <div class="container">
+            <h1 id="countdown-heading">🎉 Countdown to Orin's Birthday! 🎉</h1>
+            <div id="clock" class="clock"></div>
+            <div id="countdown" class="countdown"></div>
+            <div class="quotes">
+                <p id="quote" class="quote"></p>
+            </div>
+            <div id="surpriseButtonContainer">
+                <button id="surpriseButton">🎈 Click for Birthday Message! 🎈</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unmute Button -->
+    <button id="unmuteButton" onclick="unmuteVideo()">Unmute Audio</button>
+
+    <footer class="footer">
+        Made with ❤️ and care by Aadil
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Function to unmute video
+        function unmuteVideo() {
+            var iframe = document.getElementById('background-video-frame');
+            var iframeSrc = iframe.src;
+            iframe.src = iframeSrc.replace('mute=1', 'mute=0');
+            document.getElementById('unmuteButton').style.display = 'none';
+        }
+
+        // Function to make the heading colorful
+        function makeHeadingColorful() {
+            const heading = document.getElementById("countdown-heading");
+            let colors = ["#FF6347", "#FFA500", "#FFFF00", "#32CD32", "#1E90FF", "#8A2BE2"];
+            let colorIndex = 0;
+            
+            setInterval(() => {
+                heading.style.color = colors[colorIndex];
+                colorIndex = (colorIndex + 1) % colors.length;
+            }, 1000);
+        }
+
+        // Function to display the current time with a colorful effect
+        function displayCurrentTime() {
+            const clock = document.getElementById("clock");
+            setInterval(() => {
+                const currentTime = new Date().toLocaleTimeString();
+                clock.textContent = `Current Time: ${currentTime}`;
+            }, 1000);
+        }
+
+        // Initialize colorful heading and time display
+        makeHeadingColorful();
+        displayCurrentTime();
+    </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+/* Reset & Base Layout */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right, #f9f9f9, #fefefe);
+}
+
+/* Countdown Background */
+.background {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Message Background */
+.message-background {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(to left, #fff0f5, #ffe4e1);
+}
+
+/* Shared container styles */
+.container, .message-container {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Clock and Countdown */
+.clock {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.countdown-segment {
+    background-color: #f3f3f3;
+    padding: 10px 15px;
+    border-radius: 10px;
+    min-width: 60px;
+}
+
+.countdown-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.countdown-label {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Quote */
+.quote {
+    font-style: italic;
+    margin: 20px 0;
+    transition: color 0.5s ease;
+}
+
+/* Button */
+#surpriseButton,
+.back-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    background-color: #ff69b4;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+#surpriseButton:hover,
+.back-button:hover {
+    background-color: #ff1493;
+}
+
+/* Confetti */
+#confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    opacity: 0.7;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10px); }
+    100% { transform: translateY(100vh); }
+}
+
+/* Cake 🎂 */
+.cake {
+    position: relative;
+    margin: 40px auto;
+    width: 100px;
+    height: 120px;
+}
+
+.plate {
+    width: 120px;
+    height: 20px;
+    background: #ccc;
+    border-radius: 10px;
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+}
+
+.layer {
+    width: 100px;
+    height: 30px;
+    background: #ffb6c1;
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+}
+
+.layer-bottom { bottom: 0; }
+.layer-middle { bottom: 30px; background: #ff69b4; }
+.layer-top { bottom: 60px; background: #ff1493; }
+
+.icing {
+    width: 100px;
+    height: 10px;
+    background: #fff;
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    bottom: 90px;
+}
+
+.candle {
+    width: 10px;
+    height: 30px;
+    background: #333;
+    position: absolute;
+    left: 45px;
+    bottom: 100px;
+}
+
+.flame {
+    width: 10px;
+    height: 10px;
+    background: orange;
+    border-radius: 50%;
+    position: absolute;
+    left: 45px;
+    bottom: 130px;
+    animation: flicker 0.3s infinite;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #f1f1f1;
+    font-size: 0.9rem;
+    color: #666;
+    border-top: 1px solid #ddd;
+    font-family: 'Pacifico', cursive;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .countdown-number {
+        font-size: 1.5rem;
+    }
+    .countdown-label {
+        font-size: 0.75rem;
+    }
+
+    #surpriseButton,
+    .back-button {
+        width: 90%;
+        font-size: 1rem;
+    }
+
+    .cake {
+        transform: scale(0.9);
+    }
+}
+
+/* Container for the letter */
+.letter-container {
+    font-size: 1.5em; /* Adjust font size for readability */
+    font-family: 'Montserrat', sans-serif; /* Clean and modern font */
+    font-weight: normal; /* Normal weight for readability */
+    text-align: left; /* Align text to the left, like a letter */
+    color: #000; /* Black text for clarity */
+    margin: 0;
+    padding: 30px;
+    position: relative; /* Positioned relative to the surrounding content */
+    top: 0; /* No vertical offset */
+    width: 80%; /* Ensure it's wide enough for large text */
+    max-width: 500px; /* Limit width */
+    z-index: 10;
+    text-align: center; /* Center the text inside the letter container */
+    margin-top: 20px; /* Slight spacing from the previous section */
+    margin-bottom: 20px; /* Slight spacing before the "Back to countdown" button */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional, for a small shadow effect */
+}
+
+/* Styling each paragraph */
+.letter-line {
+    margin: 15px 0; /* Adds space between lines */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Soft shadow for readability */
+    line-height: 1.6; /* Slight line-height adjustment */
+}
+
+/* Ensure the overall layout adjusts to a compact form */
+.container, .message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
